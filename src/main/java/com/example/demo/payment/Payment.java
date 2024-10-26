@@ -1,5 +1,5 @@
 package com.example.demo.payment;
 
 public interface Payment {
-    public String pay(Integer price);
+    String pay(Integer price);
 }

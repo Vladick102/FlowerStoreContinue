@@ -14,16 +14,16 @@ public class Order {
     private List<Item> items;
     private Delivery delivery;
     private Payment payment;
-
-    public void setItems(List<Item> newItems) {
-        items = newItems;
-    }
-
+    
     public Order(List<Item> items, Delivery delivery) {
         this.items = items;
         this.delivery = delivery;
     }
 
+    public void setItems(List<Item> newItems) {
+        items = newItems;
+    }
+    
     public Integer calculateTotalPrice() {
         int res = 0;
         for (Item item : items) {

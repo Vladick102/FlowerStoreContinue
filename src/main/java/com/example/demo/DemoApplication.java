@@ -21,16 +21,21 @@ public class DemoApplication {
 
 	@GetMapping("/order")
 	public static List<Order> listFlowers() {
+		final int NUM = 10;
 		return List.of(
-				new Order(
-						List.of((new Flower(10, FlowerColor.BLUE, 10, FlowerType.ROSE)),
-								new Flower(10, FlowerColor.BLUE, 10, FlowerType.ROSE),
-								new Flower(10, FlowerColor.BLUE, 10, FlowerType.ROSE)),
+				new Order(List.of(
+						(new Flower(NUM, FlowerColor.BLUE, NUM,
+								FlowerType.ROSE)),
+						new Flower(NUM, FlowerColor.BLUE, NUM, FlowerType.ROSE),
+						new Flower(NUM, FlowerColor.BLUE, NUM,
+								FlowerType.ROSE)),
 						new DHLDeliveryStrategy()),
-				new Order(
-						List.of((new Flower(10, FlowerColor.BLUE, 10, FlowerType.ROSE)),
-								new Flower(10, FlowerColor.BLUE, 10, FlowerType.ROSE),
-								new Flower(10, FlowerColor.BLUE, 10, FlowerType.ROSE)),
+				new Order(List.of(
+						(new Flower(NUM, FlowerColor.BLUE, NUM,
+								FlowerType.ROSE)),
+						new Flower(NUM, FlowerColor.BLUE, NUM, FlowerType.ROSE),
+						new Flower(NUM, FlowerColor.BLUE, NUM,
+								FlowerType.ROSE)),
 						new PostDeliveryStrategy()));
 
 	}
