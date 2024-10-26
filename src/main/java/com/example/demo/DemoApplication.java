@@ -14,29 +14,25 @@ import com.example.demo.flower.FlowerType;
 @SpringBootApplication
 @RestController
 public class DemoApplication {
+    public static void main(String[] args) {
+        SpringApplication.run(DemoApplication.class, args);
+    }
 
-	public static void main(String[] args) {
-		SpringApplication.run(DemoApplication.class, args);
-	}
+    @GetMapping("/order")
+    public static List<Order> listFlowers() {
+        final int NUM = 10;
+        Order orderOne = new Order(List.of(
+                (new Flower(NUM, FlowerColor.BLUE, NUM, FlowerType.ROSE)),
+                new Flower(NUM, FlowerColor.BLUE, NUM, FlowerType.CHAMOMILE),
+                new Flower(NUM, FlowerColor.BLUE, NUM, FlowerType.TULIP)),
+                new DHLDeliveryStrategy());
 
-	@GetMapping("/order")
-	public static List<Order> listFlowers() {
-		final int NUM = 10;
-		return List.of(
-				new Order(List.of(
-						(new Flower(NUM, FlowerColor.BLUE, NUM,
-								FlowerType.ROSE)),
-						new Flower(NUM, FlowerColor.BLUE, NUM, FlowerType.ROSE),
-						new Flower(NUM, FlowerColor.BLUE, NUM,
-								FlowerType.ROSE)),
-						new DHLDeliveryStrategy()),
-				new Order(List.of(
-						(new Flower(NUM, FlowerColor.BLUE, NUM,
-								FlowerType.ROSE)),
-						new Flower(NUM, FlowerColor.BLUE, NUM, FlowerType.ROSE),
-						new Flower(NUM, FlowerColor.BLUE, NUM,
-								FlowerType.ROSE)),
-						new PostDeliveryStrategy()));
+        Order orderTwo = new Order(List.of(
+                (new Flower(NUM, FlowerColor.BLUE, NUM, FlowerType.ROSE)),
+                new Flower(NUM, FlowerColor.BLUE, NUM, FlowerType.CHAMOMILE),
+                new Flower(NUM, FlowerColor.BLUE, NUM, FlowerType.TULIP)),
+                new PostDeliveryStrategy());
+        return List.of(orderOne, orderTwo);
 
-	}
+    }
 }
